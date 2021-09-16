@@ -1,46 +1,42 @@
 <template>
-  <v-card
-    class="d-flex pa-2"
-    outlined
-    tile
-  >
-    <div>
-        <v-form>
-            <v-container>
-            <v-row>
-                <v-col
-                cols="12"
-                sm="6"
-                >
-                <v-text-field
-                    v-model="first"
-                    label="E-mail"
-                    solo
-                ></v-text-field>
-                </v-col>
-            
-                <v-col
-                cols="12"
-                sm="6"
-                >
-                <v-text-field
-                    v-model="last"
-                    label="Senha"
-                    solo
-                ></v-text-field>
-                </v-col>
-                <v-btn
-                    block
-                    elevation="2"
-                    color="#f2aa6b"
-                    dark
-                    x-large
-                >Entrar</v-btn>
-            </v-row>
-            </v-container>
-        </v-form>
+    <div class="row-login">
+        <v-container>
+        <v-row>
+            <v-col
+            cols=5
+            sm=3
+            class="justify-content-center align-items-center left-login"
+            >
+            </v-col>
+    
+            <v-col
+            cols="7"
+            sm="6"
+            class="justify-content-center align-items-center"
+            >
+            <v-form>   
+            <v-text-field
+                v-model="first"
+                label="E-mail"
+                solo
+            ></v-text-field>
+                
+            <v-text-field
+                v-model="last"
+                label="Senha"
+                solo
+            ></v-text-field>
+            </v-form> 
+            <v-btn
+                elevation="2"
+                color="#f2aa6b"
+                dark
+                large
+            >Entrar</v-btn>
+            </v-col>
+        </v-row>
+        </v-container>
     </div>
-  </v-card>
 </template>
 
 
@@ -54,6 +50,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.left-login{
+    background-color: #f2aa6b;
+}
 
+.row-login{
+    margin: 15% 30% 15%;
+}
 </style>
 

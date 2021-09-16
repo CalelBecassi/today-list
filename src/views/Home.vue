@@ -1,10 +1,15 @@
 <template>
-  <h1>AQUI VAI A PAGINA PRINCIPAL DA APLICAÇÃO</h1>
+  <hello-world />
 </template>
 
 <script>
+  import HelloWorld from '../components/HelloWorld'
 
-export default {
-  name: 'Home',
-}
+  export default {
+    name: 'Home',
+
+    components: {
+      HelloWorld,
+    },
+  }
 </script>

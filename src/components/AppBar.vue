@@ -4,7 +4,7 @@
       color="#F2AA6B"
       dark
     >
-      <div class="d-flex align-center" id="logo">
+      <div class="d-flex align-center left-buttons" id="logo">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -13,18 +13,24 @@
           transition="scale-transition"
           width="150"
         />
-
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <div class="right-buttons">
+        <v-icon color="black" x-large>mdi-home</v-icon>
+        <v-icon color="black" x-large>mdi-account-box</v-icon>
+      </div>
+      
     </v-app-bar>
 </template>
+
+<style scoped>
+.right-buttons{
+  margin-right: 10%;
+}
+
+.left-buttons{
+  margin-left: 10%;
+}
+</style>

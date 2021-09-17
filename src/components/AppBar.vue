@@ -6,14 +6,13 @@
     >
       <div class="d-flex align-center left-buttons" id="logo">
         <v-img
-          alt="Vuetify Logo"
+          alt="ToDay Logo"
           class="shrink mr-2"
           contain
           src="../assets/logo-bar.png"
           transition="scale-transition"
           width="150"
-        />
-      </div>
+        /></div>
 
       <v-spacer></v-spacer>
 

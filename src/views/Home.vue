@@ -1,15 +1,33 @@
 <template>
-  <hello-world />
+  <v-app>
+    <AppBar />
+
+    <v-content>
+      <AddTodo class="add-todo"/>
+    </v-content>
+  </v-app>
+
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import AppBar from '../components/AppBar.vue'
+  import AddTodo from '../components/AddTodo.vue'
+
 
   export default {
     name: 'Home',
 
     components: {
-      HelloWorld,
+      AppBar,
+      AddTodo,
     },
   }
 </script>
+
+<style scoped>
+.add-todo{
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 50%;
+}
+</style>

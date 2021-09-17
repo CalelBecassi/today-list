@@ -2,10 +2,28 @@ const state = {
   listas: 
   [
     {
-      nome: 'Nome lista',
+      nome: 'Nome lista 1',
       todos: [
         {
-          description: 'Aqui é a descrição do to-do',
+          description: 'Aqui é a descrição do to-do 1',
+          checked: false,
+        }
+      ]
+    },
+    {
+      nome: 'Nome lista 2',
+      todos: [
+        {
+          description: 'Aqui é a descrição do to-do 2',
+          checked: false,
+        }
+      ]
+    },
+    {
+      nome: 'Nome lista 3',
+      todos: [
+        {
+          description: 'Aqui é a descrição do to-do 3',
           checked: false,
         }
       ]
@@ -22,13 +40,13 @@ const mutations = {
     const stateCopy = $state;
     stateCopy.listas.push(payload);
   },
-  addNewTodo($state, payload) {
-    const stateCopy = $state;
+  // addNewTodo($state, payload) {
+  //   const stateCopy = $state;
     
-    stateCopy.forEach(lista, index => {
+  //   stateCopy.forEach(lista, index => {
 
-    });
-  }
+  //   });
+  // }
 };
 
 const actions = { 
@@ -38,5 +56,6 @@ const actions = {
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 };

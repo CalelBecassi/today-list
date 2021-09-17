@@ -1,7 +1,8 @@
 <template>
     <v-container>
+        <AppBar/>
         <v-sheet
-            class="mx-auto"
+            class="mx-auto mt-16"
             color="white"
             elevation="16"
             height="400"
@@ -34,8 +35,12 @@
 </template>
 
 <script>
+import AppBar from '../components/AppBar.vue'
 export default {
     name: 'Config',
+    components:{
+        AppBar,
+    }
 }
 </script>
 

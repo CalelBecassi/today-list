@@ -1,12 +1,11 @@
 <template>
-  <v-app>
+  <v-container>
     <AppBar />
 
     <v-content>
       <AddTodo class="add-todo"/>
     </v-content>
-  </v-app>
-
+  </v-container>
 </template>
 
 <script>

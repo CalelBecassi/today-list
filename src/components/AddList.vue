@@ -12,7 +12,7 @@
       clearable
     ></v-text-field>
     <v-spacer />
-    <v-btn rounded color="green" dark x-large> Adicionar </v-btn>
+    <v-btn type="submit" rounded color="green" dark x-large> Adicionar </v-btn>
   </v-form>
 </template>
 

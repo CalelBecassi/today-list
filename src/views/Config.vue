@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.style-btn {
-  width: 300px;
-}
+    .style-btn{
+        width:18.75em;
+    }
 </style>

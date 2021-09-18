@@ -36,7 +36,7 @@
 <style scoped>
 .add-list{
   margin-top: 10%;
-  margin-left: 10%;
+  margin-left: 20%;
   width: 50%;
 }
 </style>

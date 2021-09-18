@@ -52,6 +52,7 @@ const state = {
   ]
 };
 
+// CREATE RETURN UPDATE DELETE
 const colors = ['#FD7F7F','#7FC1FD','#FDC37F','#3FA736'];
 
 const getters = {
@@ -68,6 +69,7 @@ const mutations = {
       ...payload,
       id: listas.length,
       color: color,
+      todos: [],
     });
 
     colors.push(color);
@@ -91,12 +93,8 @@ const actions = {
     commit('addTodo', payload);
   },
   addList({commit}, payload) {
-    commit('addNewLista', {
-      ...payload,
-      todos: []
-    })
+    commit('addNewLista', payload)
   }
-
 };
 
 export default {

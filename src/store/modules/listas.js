@@ -6,8 +6,9 @@ const state = {
       id: 0,
       todos: [
         {
-          description: 'Aqui é a descrição do to-do 1',
-          checked: false,
+          id: 0,
+          descricao: 'Aqui é a descrição do to-do 1',
+          feito: false,
         }
       ]
     },
@@ -16,8 +17,9 @@ const state = {
       id: 1,
       todos: [
         {
-          description: 'Aqui é a descrição do to-do 2',
-          checked: false,
+          id: 0,
+          descricao: 'Aqui é a descrição do to-do 2',
+          feito: false,
         }
       ]
     },
@@ -26,8 +28,9 @@ const state = {
       id: 2,
       todos: [
         {
-          description: 'Aqui é a descrição do to-do 3',
-          checked: false,
+          id: 0,
+          descricao: 'Aqui é a descrição do to-do 3',
+          feito: false,
         }
       ]
     },
@@ -36,8 +39,9 @@ const state = {
       id: 3,
       todos: [
         {
-          description: 'Aqui é a descrição do to-do 4',
-          checked: false,
+          id: 0,
+          descricao: 'Aqui é a descrição do to-do 4',
+          feito: false,
         }
       ]
     },
@@ -51,23 +55,35 @@ const getters = {
 const mutations = {
   addNewLista($state, payload) {
     const stateCopy = $state;
-    stateCopy.listas.push(payload);
+    const listas = stateCopy.listas;
+    listas.push({
+      ...payload,
+      id: listas.length,
+    });
   },
   addTodo($state, payload) {
     const stateCopy = $state;
 
     const indx = stateCopy.listas.findIndex((el) => (el.id == payload.lista));
+    const todos = stateCopy.listas.at(indx).todos;
 
-    stateCopy.listas.at(indx).todos.push({
-      description: payload.description,
-      checked: false,
-    });
+    todos.push({
+      id: todos.length,
+      descricao: payload.descricao,
+      feito: false,
+    }); 
   }
 };
 
 const actions = { 
   addTodo({ commit }, payload){
     commit('addTodo', payload);
+  },
+  addList({commit}, payload) {
+    commit('addNewLista', {
+      ...payload,
+      todos: []
+    })
   }
 
 };

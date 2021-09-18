@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="todo in todos" :key="todo.description">
+    <div v-for="todo in todos" :key="todo.id">
       <todo-item :todo="todo" />
     </div>
     <v-sheet class="form-style" rounded>
@@ -31,7 +31,7 @@ export default {
   methods: {
     doAdd() {
       this.$emit('newTodo', {
-        description: this.todo_form,
+        descricao: this.todo_form,
         lista: this.listaId,
       });
       this.todo_form = '';

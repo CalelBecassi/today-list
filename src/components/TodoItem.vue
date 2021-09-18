@@ -1,7 +1,7 @@
 <template>
   <v-sheet class="todo-style mb-3 rounded">
     <div>
-      <h3 class="text-center pt-2"> {{ todo.description }} </h3>
+      <h3 class="text-center pt-2"> {{ todo.descricao }} </h3>
     </div>
   </v-sheet>
 </template>

@@ -1,15 +1,15 @@
 <template>
   <v-container>
     <AppBar />
-    <AddTodo class="add-todo"/>
+    <AddList class="add-list" @addLista="addList"/>
     <Lists :listas="getListas"/>
   </v-container>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
   import AppBar from '../components/AppBar.vue'
-  import AddTodo from '../components/AddTodo.vue'
+  import AddList from '../components/AddList.vue'
   import Lists from '../components/Lists.vue'
 
   export default {
@@ -17,7 +17,7 @@
 
     components: {
       AppBar,
-      AddTodo,
+      AddList,
       Lists,
     },
     computed: {
@@ -25,11 +25,16 @@
         'getListas',
       ]),
     },
+    methods: {
+      ...mapActions([
+        'addList'
+      ])
+    }
   }
 </script>
 
 <style scoped>
-.add-todo{
+.add-list{
   margin-top: 10%;
   margin-left: 10%;
   width: 50%;

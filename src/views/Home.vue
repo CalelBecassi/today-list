@@ -1,10 +1,8 @@
 <template>
   <v-container>
     <AppBar />
-    <v-content>
-      <AddTodo class="add-todo"/>
-      <Lists :listas="getListas"></Lists>
-    </v-content>
+    <AddTodo class="add-todo"/>
+    <Lists :listas="getListas"/>
   </v-container>
 </template>
 

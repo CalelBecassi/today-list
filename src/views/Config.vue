@@ -46,6 +46,6 @@ export default {
 
 <style lang="scss" scoped>
     .style-btn{
-        width:300px;
+        width:18.75em;
     }
 </style>

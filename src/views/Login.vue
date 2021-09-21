@@ -1,6 +1,8 @@
 <template>
   <div class="vh-100 vw-100 row-login">
-    <v-container>
+    <v-container
+      class="mt-14"
+    >
       <v-sheet
         class="d-flex mx-auto mt-16"
         color="white"
@@ -14,7 +16,7 @@
         <v-col sm="4" class="d-flex left-login">
           <v-img
             alt="ToDay Login"
-            class="shrink mr-2"
+            class="shrink ml-6"
             contain
             src="../assets/logo-login.png"
             transition="scale-transition"
@@ -24,23 +26,7 @@
 
         <v-col sm="6" class>
           <div>
-            <v-form class="mt-14">
-              <div class="text-center"><h2>Login</h2></div>
-              <v-text-field
-                v-model="email"
-                label="E-mail"
-                solo
-                prepend-inner-icon
-              ></v-text-field>
-
-              <v-text-field
-                v-model="senha"
-                label="Senha"
-                solo
-                prepend-inner-icon
-              ></v-text-field>
-              <v-btn elevation="2" color="#f2aa6b" dark large>Entrar</v-btn>
-            </v-form>
+            <login-form @doLogin="login" />
           </div>
         </v-col>
       </v-sheet>
@@ -49,11 +35,30 @@
 </template>
 
 <script>
+import { mapGetters ,mapActions } from 'vuex';
+import LoginForm from '../components/LoginForm.vue';
+
 export default {
   name: "Login",
-  data() {
-    return {};
+  components: {
+    LoginForm,
   },
+  methods: {
+    ...mapGetters([
+      'getCurrentUser',
+    ]),
+    ...mapActions([
+      'doLogin',
+    ]),
+    login(payload) {
+      this.doLogin(payload);
+      const current_user = this.getCurrentUser();
+      
+      if( current_user.email != '' ){
+        this.$router.push('home');
+      }
+    }
+  }
 };
 </script>
 

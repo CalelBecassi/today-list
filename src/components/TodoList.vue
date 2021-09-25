@@ -3,11 +3,14 @@
     <div v-for="todo in todos" :key="todo.id">
       <todo-item :todo="todo" />
     </div>
-    <v-sheet class="form-style" rounded>
-      <v-form @submit.prevent="doAdd">
-        <v-text-field outlined v-model="todo_form" label="Adicionar Novo Todo" />
-      </v-form>
-    </v-sheet>
+    <v-form @submit.prevent="doAdd">
+      <v-text-field
+        class="form-style" 
+        solo 
+        outlined 
+        v-model="todo_form" 
+        placeholder="Adicionar Novo Todo" />
+    </v-form>
   </div>
 </template>
 
@@ -44,9 +47,18 @@ export default {
 </script>
 
 <style scoped>
-.form-style {
-  width: 300px;
-  height: 56px;
-  background-color: #ffffff;
-}
+  .form-style {
+    width: 100%;
+    height: 48px;
+    background-color: #ffffff;
+  }
+
+   @media screen and (max-width: 1366px ) {
+    .form-style {
+      margin: 0 auto;
+      width: 90%;
+      font-size: 0.875rem;
+    }
+  }
+
 </style>

@@ -44,11 +44,11 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-  width: 390px;
-  height: 449px;
+  width: 20vw;
+  height: 47vh;
 
   .list-title {
-    width: 346px;
+    width: 90%;
     height: 45px;
   }
 }

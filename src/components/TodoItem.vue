@@ -29,8 +29,16 @@ export default {
 
 <style scoped>
   .todo-style {
-    width: 300px;
+    width: 100%;
     height: 45px;
     background-color: #ffffff;
+  }
+
+  @media screen and (max-width: 1366px ) {
+    .todo-style {
+      margin: 0 auto;
+      width: 90%;
+      font-size: 0.875rem;
+    }
   }
 </style>

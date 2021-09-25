@@ -1,19 +1,27 @@
 <template>
-  <v-form
-    class="d-flex flex-row"
-    @submit.prevent="newList(list_name)"  
-  >
-    <v-text-field
-      v-model="list_name"
-      label="Adicionar nova lista"
-      placeholder="Digite o nome da nova lista"
-      outlined
-      rounded
-      clearable
-    ></v-text-field>
-    <v-spacer />
-    <v-btn type="submit" rounded color="green" dark x-large> Adicionar </v-btn>
-  </v-form>
+  <v-row>
+    <v-form
+      class="d-flex"
+      @submit.prevent="newList(list_name)"
+    >
+      <v-col
+        cols="10"
+      >
+        <v-text-field
+          v-model="list_name"
+          placeholder="Digite o nome da nova lista"
+          solo
+          outlined
+          rounded
+        ></v-text-field>
+      </v-col>
+      <v-col
+        cols="2"
+      >
+        <v-btn type="submit" rounded color="green" dark x-large> Adicionar </v-btn>
+      </v-col>
+    </v-form>
+  </v-row>
 </template>
 
 <script>
@@ -26,8 +34,13 @@ export default {
   },
   methods: {
     newList(list) {
-      this.list_name = '';
-      this.$emit('addLista', { nome: list })
+      if (!(list === '')) {
+        this.list_name = '';
+        this.$emit('addLista', { nome: list });
+      }
+      else {
+        window.alert("Mensagem vazia! ")
+      }
     }
   }
 };

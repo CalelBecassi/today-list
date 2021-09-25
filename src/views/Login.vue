@@ -7,10 +7,10 @@
         class="d-flex mx-auto mt-16"
         color="white"
         elevation="16"
-        height="600"
         outlined
         rounded
         shaped
+        height="600"
         width="800"
       >
         <v-col sm="4" class="d-flex left-login">

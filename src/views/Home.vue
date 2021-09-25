@@ -1,7 +1,8 @@
 <template>
-  <v-container>
+  <v-container
+  >
     <AppBar />
-    <AddList class="add-list" @addLista="addList"/>
+    <AddList class="add-list mt-3" @addLista="addList"/>
     <Lists :listas="getListas"/>
   </v-container>
 </template>
@@ -35,8 +36,7 @@
 
 <style scoped>
 .add-list{
-  margin-top: 10%;
-  margin-left: 20%;
+  margin: 0 auto;
   width: 50%;
 }
 </style>

@@ -34,10 +34,10 @@ export default {
     background-color: #ffffff;
   }
 
-  @media screen and (max-width: 1366px ) {
+  @media screen and (max-width: 1920px ) {
     .todo-style {
       margin: 0 auto;
-      width: 90%;
+      width: 98%;
       font-size: 0.875rem;
     }
   }

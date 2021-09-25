@@ -55,7 +55,7 @@ export default {
       const current_user = this.getCurrentUser();
       
       if( current_user.email != '' ){
-        this.$router.push('home');
+        this.$router.push({ name: 'Home' });
       }
     }
   }

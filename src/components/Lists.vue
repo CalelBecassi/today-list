@@ -52,4 +52,9 @@ export default {
     height: 45px;
   }
 }
+@media screen and (max-width: 1920px){
+  .list {
+    width: 18vw;
+  }
+}
 </style>

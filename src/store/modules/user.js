@@ -30,12 +30,26 @@ const mutations = {
         }
         else
             console.log("ERRO USER LOGGED");
+    },
+    Logout($state) {
+        const stateCopy = $state;
+        const current_user = stateCopy.current_user;
+
+        if ( current_user.email.lenght != 0 ) {
+            current_user.email = '';
+        }
+        else {
+            console.log("ERRO YOU MUST BE LOGGED");
+        }
     }
 };
 
 const actions = { 
     doLogin({commit}, payload){
         commit('Login', payload);
+    },
+    doLogout({commit}){
+        commit('Logout');
     }
 };
 

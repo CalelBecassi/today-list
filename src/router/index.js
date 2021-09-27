@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import store from '../store'
+import store from '../store'
 Vue.use(VueRouter)
 
-// const authMiddle = (to, from, next) => {
-//   const user = store.getters.getCurrentUser
-//   if (to.name!='Login' && user.email == '') {
-//     return next({
-//       path: '/login'
-//     })
-//   }
-//   else next()
-// }
+const authMiddle = (to, from, next) => {
+  const user = store.getters.getCurrentUser
+  if (to.name != 'Login' && user.email == '') {
+    return next({
+      path: '/login'
+    })
+  }
+  else next()
+}
 
 const routes = [
   {
@@ -28,13 +28,13 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('../views/Home.vue'),
-    //beforeEnter: authMiddle
+    beforeEnter: authMiddle
   },
   {
     path: '/config',
     name: 'Config',
     component: () => import('../views/Config.vue'),
-    //beforeEnter: authMiddle
+    beforeEnter: authMiddle
   },
 
 ]

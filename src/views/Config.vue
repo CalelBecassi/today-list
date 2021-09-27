@@ -20,9 +20,13 @@
         <v-btn class="mb-5 style-btn py-6" color="#F2AA6B" rounded
           >Apagar Dados</v-btn
         >
-        <v-btn class="mb-5 style-btn py-6" color="#F2AA6B" rounded
-          >Trocar de Conta</v-btn
-        >
+        <v-btn 
+          class="mb-5 style-btn py-6"
+          color="#F2AA6B"
+          rounded
+          @click="logout"
+        >Trocar de Conta
+        </v-btn>
       </div>
     </v-sheet>
   </v-container>
@@ -30,16 +34,25 @@
 
 <script>
 import AppBar from "../components/AppBar.vue";
+import store from "../store";
+
 export default {
   name: "Config",
   components: {
     AppBar,
   },
+  methods: {
+    logout(){
+      store.dispatch('doLogout').then(() => {
+      this.$router.push({ name: 'Login' });
+      });
+    },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
     .style-btn{
-        width:18.75em;
+      width:18.75em;
     }
 </style>

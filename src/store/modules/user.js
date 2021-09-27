@@ -15,7 +15,7 @@ const getters = {
 }
 
 const mutations = {
-    Login($state, payload){
+    Login($state, payload) {
         const stateCopy = $state;
         const current_user = stateCopy.current_user;
 
@@ -41,6 +41,21 @@ const mutations = {
         else {
             console.log("ERRO YOU MUST BE LOGGED");
         }
+    },
+    newUser($state, payload) {
+        const stateCopy = $state;
+
+        if (payload.senha !== '' && payload.senha === payload.confirmacaoSenha) {
+            if (payload.email !== '') {
+                stateCopy.users.push({
+                    email: payload.email,
+                    senha: payload.senha,
+                });
+            } else 
+                throw new Error("EMAIL INVALIDO")
+        }
+        else
+            throw new Error("SENHAS NAO COINCIDEM OU INVALIDA")
     }
 };
 
@@ -50,6 +65,9 @@ const actions = {
     },
     doLogout({commit}){
         commit('Logout');
+    },
+    newUser({commit}, payload){
+        commit('newUser', payload);
     }
 };
 

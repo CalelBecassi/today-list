@@ -24,11 +24,16 @@
           </div>
         </v-col>
 
-        <v-col sm="8" class>
+        <v-col sm="8" class="mt-10">
           <div class="col-8 mx-auto mt-15">
-            <v-form>
-              <div class="text-center"><h2>Cadastre-se</h2></div>
-              
+            <div class="text-center mb-5"><h2>Cadastre-se</h2></div>
+            <v-form
+              @submit.prevent="doAdd({
+                email: email,
+                senha: senha,
+                confirmacaoSenha: confirmacaoSenha,
+              })"
+            >
               <v-text-field
                 v-model="email"
                 label="E-mail"
@@ -46,13 +51,13 @@
               ></v-text-field>
 
               <v-text-field
-                v-model="confirmasenha"
+                v-model="confirmacaoSenha"
                 label="Confirme a senha"
                 prepend-inner-icon="mdi-lock"
                 dense
                 solo-inverted
               ></v-text-field>
-              <v-btn elevation="5" color="#f2aa6b" dark block large>Confirmar</v-btn>
+              <v-btn type="submit" elevation="5" color="#f2aa6b" dark block large>Confirmar</v-btn>
             </v-form>
           </div>
         </v-col>
@@ -62,11 +67,36 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: "Login",
   data() {
-    return {};
+    return {
+      email: '',
+      senha: '',
+      confirmacaoSenha: '',
+    };
   },
+  methods: {
+    ...mapActions([
+      'newUser'
+    ]),
+    doAdd(payload) {
+      this.email = '';
+      this.senha = '';
+      this.confirmacaoSenha = '';
+
+      this.newUser(payload).then((_, e) => {
+        if (e) {
+          console.log(e);
+        }
+        else {
+          this.$router.push({ name: 'Login' });
+        }
+      })
+    }
+  }
 };
 </script>
 

@@ -1,32 +1,42 @@
 <template>
-  <v-container>
+  <v-container
+  >
     <AppBar />
-
-    <v-content>
-      <AddTodo class="add-todo"/>
-    </v-content>
+    <AddList class="add-list mt-3" @addLista="addList"/>
+    <Lists :listas="getListas"/>
   </v-container>
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex';
   import AppBar from '../components/AppBar.vue'
-  import AddTodo from '../components/AddTodo.vue'
-
+  import AddList from '../components/AddList.vue'
+  import Lists from '../components/Lists.vue'
 
   export default {
     name: 'Home',
 
     components: {
       AppBar,
-      AddTodo,
+      AddList,
+      Lists,
     },
+    computed: {
+      ...mapGetters([
+        'getListas',
+      ]),
+    },
+    methods: {
+      ...mapActions([
+        'addList'
+      ])
+    }
   }
 </script>
 
 <style scoped>
-.add-todo{
-  margin-top: 10%;
-  margin-left: 10%;
+.add-list{
+  margin: 0 auto;
   width: 50%;
 }
 </style>

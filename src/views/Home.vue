@@ -21,6 +21,9 @@
       AddList,
       Lists,
     },
+    created() {
+      this.fetchListas();
+    },
     computed: {
       ...mapGetters([
         'getListas',
@@ -28,7 +31,8 @@
     },
     methods: {
       ...mapActions([
-        'addList'
+        'addList',
+        'fetchListas'
       ])
     }
   }

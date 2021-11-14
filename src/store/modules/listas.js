@@ -1,55 +1,7 @@
+import ListResource from "../../api/resources/list";
+
 const state = {
-  listas: 
-  [
-    {
-      nome: 'Nome lista 1',
-      id: 0,
-      color: '#FD7F7F',
-      todos: [
-        {
-          id: 0,
-          descricao: 'Aqui é a descrição do to-do 1',
-          feito: false,
-        }
-      ]
-    },
-    {
-      nome: 'Nome lista 2',
-      id: 1,
-      color: '#7FC1FD',
-      todos: [
-        {
-          id: 0,
-          descricao: 'Aqui é a descrição do to-do 2',
-          feito: false,
-        }
-      ]
-    },
-    {
-      nome: 'Nome lista 3',
-      id: 2,
-      color: '#FDC37F',
-      todos: [
-        {
-          id: 0,
-          descricao: 'Aqui é a descrição do to-do 3',
-          feito: false,
-        }
-      ]
-    },
-    {
-      nome: 'Nome lista 4',
-      id: 3,
-      color: '#3FA736',
-      todos: [
-        {
-          id: 0,
-          descricao: 'Aqui é a descrição do to-do 4',
-          feito: false,
-        }
-      ]
-    },
-  ]
+  listas: []
 };
 
 // CREATE RETURN UPDATE DELETE
@@ -85,6 +37,10 @@ const mutations = {
       descricao: payload.descricao,
       feito: false,
     });
+  },
+  setListas($state,payload) {
+    const stateCopy = $state;
+    stateCopy.listas = payload;
   }
 };
 
@@ -94,6 +50,11 @@ const actions = {
   },
   addList({commit}, payload) {
     commit('addNewLista', payload)
+  },
+  fetchListas( {commit} ) {
+    ListResource.listas().then((res) => {
+      commit('setListas', res);
+    })
   }
 };
 

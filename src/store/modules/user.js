@@ -6,6 +6,7 @@ const state = {
 
 const getters = {
     getCurrentUser: (state) => state.current_user,
+    getBearerToken: (state) => state.current_user? `Bearer ${state.current_user.token}` : ' ',
 }
 
 const mutations = {
@@ -30,7 +31,7 @@ const mutations = {
         const current_user = stateCopy.current_user;
 
         if ( current_user ) {
-            stateCopy.current_user =  undefined;
+            stateCopy.current_user = undefined;
         }
         else {
             console.log("ERRO YOU MUST BE LOGGED");

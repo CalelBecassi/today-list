@@ -1,11 +1,16 @@
 import Vue from 'vue';
+import store from '../store';
 
 const ApiService = {
 
   get(resourcePath) {
     return new Promise((resolve) => {
       Vue.axios
-        .get(resourcePath).then((response) => {
+        .get(resourcePath, {
+          headers: {
+            token: store.getters.getBearerToken
+          }
+        }).then((response) => {
           resolve(response.data);
         }).catch(() => {
           // Just to error dont show in console, axios handle the error;
@@ -17,7 +22,11 @@ const ApiService = {
   put(resourcePath, params) {
     return new Promise((resolve) => {
       Vue.axios
-        .put(resourcePath, params).then((response) => {
+        .put(resourcePath, params, {
+          headers: {
+            token: store.getters.getBearerToken
+          }
+        }).then((response) => {
           resolve(response.data);
         })
         .catch(() => {
@@ -30,7 +39,11 @@ const ApiService = {
   post(resourcePath, params) {
     return new Promise((resolve) => {
       Vue.axios
-        .post(`${resourcePath}`, params).then((response) => {
+        .post(`${resourcePath}`, params, {
+          headers: {
+            token: store.getters.getBearerToken
+          }
+        }).then((response) => {
           resolve(response.data);
         }).catch((err) => {
           // Just to error dont show in console, axios handle the error;
@@ -42,7 +55,11 @@ const ApiService = {
   delete(resourcePath, params) {
     return new Promise((resolve) => {
       Vue.axios
-        .delete(`${resourcePath}`, { data: params }).then((response) => {
+        .delete(`${resourcePath}`, { data: params }, {
+          headers: {
+            token: store.getters.getBearerToken
+          }
+        }).then((response) => {
           resolve(response.data);
         })
         .catch(() => {
@@ -55,7 +72,11 @@ const ApiService = {
   query(resourcePath, params) {
     return new Promise((resolve) => {
       Vue.axios
-        .get(`${resourcePath}`, { params }).then((response) => {
+        .get(`${resourcePath}`, { params }, {
+          headers: {
+            token: store.getters.getBearerToken
+          }
+        }).then((response) => {
           resolve(response.data);
         })
         .catch(() => {

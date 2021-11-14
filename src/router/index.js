@@ -4,8 +4,8 @@ import store from '../store'
 Vue.use(VueRouter)
 
 const authMiddle = (to, from, next) => {
-  const user = store.getters.getCurrentUser
-  if (to.name != 'Login' && user.email == '') {
+  const user = store.getters.getCurrentUser;
+  if (to.name != 'Login' && !user) {
     return next({
       path: '/login'
     })

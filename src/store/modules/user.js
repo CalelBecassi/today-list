@@ -1,13 +1,7 @@
+import UserResource from "../../api/resources/user";
+
 const state = {
-    current_user: {
-        email: '',
-    },
-    users: [
-       {
-            email: 'teste@teste.com',
-            senha: 'senha123'
-       },
-    ]
+    current_user: undefined
 };
 
 const getters = {
@@ -18,15 +12,15 @@ const mutations = {
     Login($state, payload) {
         const stateCopy = $state;
         const current_user = stateCopy.current_user;
+        const {email, senha} = payload;
 
-        if (current_user.email == '') {
-            const user = $state.users.find((user) => user.email == payload.email && user.senha == payload.senha);
-
-            if (user) {
-                stateCopy.current_user.email = user.email;
-            }
-            else
-                console.log("ERRO USER NOT FOUND"); 
+        if (!current_user) {
+            UserResource.login({
+                email,
+                password: senha
+            }).then((response) => {
+                stateCopy.current_user = response;
+            })
         }
         else
             console.log("ERRO USER LOGGED");
@@ -35,28 +29,13 @@ const mutations = {
         const stateCopy = $state;
         const current_user = stateCopy.current_user;
 
-        if ( current_user.email.lenght != 0 ) {
-            current_user.email = '';
+        if ( current_user ) {
+            stateCopy.current_user =  undefined;
         }
         else {
             console.log("ERRO YOU MUST BE LOGGED");
         }
     },
-    newUser($state, payload) {
-        const stateCopy = $state;
-
-        if (payload.senha !== '' && payload.senha === payload.confirmacaoSenha) {
-            if (payload.email !== '') {
-                stateCopy.users.push({
-                    email: payload.email,
-                    senha: payload.senha,
-                });
-            } else 
-                throw new Error("EMAIL INVALIDO")
-        }
-        else
-            throw new Error("SENHAS NAO COINCIDEM OU INVALIDA")
-    }
 };
 
 const actions = { 
@@ -66,8 +45,21 @@ const actions = {
     doLogout({commit}){
         commit('Logout');
     },
-    newUser({commit}, payload){
-        commit('newUser', payload);
+    newUser(_, payload) {
+        if (payload.senha !== '' && payload.senha === payload.confirmacaoSenha) {
+            if (payload.email !== '') {
+                UserResource.register({
+                    name: payload.nome,
+                    email: payload.email,
+                    password: payload.senha
+                }).then(() => {
+                    window.alert('USUARIO CRIADO COM SUCESSO');
+                });
+            } else 
+                throw new Error("EMAIL INVALIDO")
+        }
+        else
+            throw new Error("SENHAS NAO COINCIDEM OU INVALIDA")
     }
 };
 

@@ -29,11 +29,20 @@
             <div class="text-center mb-5"><h2>Cadastre-se</h2></div>
             <v-form
               @submit.prevent="doAdd({
-                email: email,
-                senha: senha,
-                confirmacaoSenha: confirmacaoSenha,
+                nome,
+                email,
+                senha,
+                confirmacaoSenha,
               })"
-            >
+            > 
+              <v-text-field
+                v-model="nome"
+                label="Nome"
+                prepend-inner-icon="mdi-account"
+                dense
+                solo-inverted
+              ></v-text-field>
+
               <v-text-field
                 v-model="email"
                 label="E-mail"
@@ -73,6 +82,7 @@ export default {
   name: "Login",
   data() {
     return {
+      nome: '',
       email: '',
       senha: '',
       confirmacaoSenha: '',
@@ -83,6 +93,7 @@ export default {
       'newUser'
     ]),
     doAdd(payload) {
+      this.nome = '';
       this.email = '';
       this.senha = '';
       this.confirmacaoSenha = '';

@@ -14,29 +14,16 @@ const getters = {
 const mutations = {
   addNewLista($state, payload) {
     const stateCopy = $state;
-    const listas = stateCopy.listas;
-    const color = colors.shift();
-
-    listas.push({
-      ...payload,
-      id: listas.length,
-      color: color,
-      todos: [],
-    });
-
-    colors.push(color);
+    stateCopy.listas.push(payload);
   },
-  addTodo($state, payload) {
+  setLista($state, payload) {
     const stateCopy = $state;
+    const listas = stateCopy.listas;
 
-    const indx = stateCopy.listas.findIndex((el) => (el.id == payload.lista));
-    const todos = stateCopy.listas.at(indx).todos;
+    const lista = listas.find(el => el._id === payload._id);
+    const index = listas.indexOf(lista);
 
-    todos.push({
-      id: todos.length,
-      descricao: payload.descricao,
-      feito: false,
-    });
+    stateCopy.listas[index].todos = payload.todos;
   },
   setListas($state,payload) {
     const stateCopy = $state;
@@ -46,10 +33,20 @@ const mutations = {
 
 const actions = { 
   addTodo({ commit }, payload){
-    commit('addTodo', payload);
+    ListResource.newTodo(payload).then(
+      (res) =>  {
+        commit('setLista', res);
+      }
+    );
   },
   addList({commit}, payload) {
-    commit('addNewLista', payload)
+    const color = colors.shift();
+
+    ListResource.newLista({ ...payload, color, todos: [] }).then((res) => {
+      commit('addNewLista', res);
+    });
+
+    colors.push(color);
   },
   fetchListas( {commit} ) {
     ListResource.listas().then((res) => {

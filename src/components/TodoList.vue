@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="todo in todos" :key="todo.id">
+    <div v-for="todo in todos" :key="todo._id">
       <todo-item :todo="todo" />
     </div>
     <v-form @submit.prevent="doAdd">
@@ -23,7 +23,7 @@ export default {
       default: () => [],
     },
     listaId: {
-      type: Number,
+      type: String,
     },
   },
   data() {
@@ -34,8 +34,10 @@ export default {
   methods: {
     doAdd() {
       this.$emit('newTodo', {
-        descricao: this.todo_form,
-        lista: this.listaId,
+        todo: {
+          descricao: this.todo_form,
+        },
+        lista_id: this.listaId,
       });
       this.todo_form = '';
     },

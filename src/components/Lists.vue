@@ -16,7 +16,7 @@
             </h3>
           </v-sheet>
 
-          <todo-list :todos="lista.todos" :listaId="lista.id" @newTodo="addTodo" />
+          <todo-list :todos="lista.todos" :listaId="lista._id" @newTodo="addTodo" />
         </v-sheet>
       </v-col>
     </v-row>

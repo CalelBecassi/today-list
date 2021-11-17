@@ -4,9 +4,6 @@ const state = {
   listas: []
 };
 
-// CREATE RETURN UPDATE DELETE
-const colors = ['#FD7F7F','#7FC1FD','#FDC37F','#3FA736'];
-
 const getters = {
   getListas: (state) => state.listas,
 };
@@ -40,13 +37,11 @@ const actions = {
     );
   },
   addList({commit}, payload) {
-    const color = colors.shift();
 
-    ListResource.newLista({ ...payload, color, todos: [] }).then((res) => {
+    ListResource.newLista({ ...payload, todos: [] }).then((res) => {
       commit('addNewLista', res);
     });
 
-    colors.push(color);
   },
   fetchListas( {commit} ) {
     ListResource.listas().then((res) => {

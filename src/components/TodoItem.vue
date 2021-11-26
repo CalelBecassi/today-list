@@ -11,6 +11,12 @@
       <div class="mt-n2">
         <v-checkbox v-model="todo.feito"/>
       </div>
+      <v-icon 
+        class="mt-n2"
+        @click="deleteTodo"  
+      >
+        mdi-delete
+      </v-icon>
     </div>
   </v-sheet>
 </template>
@@ -24,6 +30,11 @@ export default {
       default: () => {},
     }
   },
+  methods: {
+    deleteTodo() {
+      this.$emit('deleteTodo', {id: this.todo._id});
+    },
+  }
 };
 </script>
 

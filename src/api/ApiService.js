@@ -55,11 +55,9 @@ const ApiService = {
   delete(resourcePath, params) {
     return new Promise((resolve) => {
       Vue.axios
-        .delete(`${resourcePath}`, { data: params }, {
-          headers: {
-            token: store.getters.getBearerToken
-          }
-        }).then((response) => {
+        .delete(`${resourcePath}`, { data: params, headers: {
+          token: store.getters.getBearerToken
+        }}).then((response) => {
           resolve(response.data);
         })
         .catch(() => {

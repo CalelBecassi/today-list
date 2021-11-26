@@ -16,7 +16,7 @@
             </h3>
           </v-sheet>
 
-          <todo-list :todos="lista.todos" :listaId="lista._id" @newTodo="addTodo" />
+          <todo-list :todos="lista.todos" :listaId="lista._id" @newTodo="addTodo" @doDelete="deleteTodo"/>
         </v-sheet>
       </v-col>
     </v-row>
@@ -34,7 +34,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['addTodo']),
+    ...mapActions(['addTodo', 'deleteTodo']),
   },
   components: {
     TodoList,

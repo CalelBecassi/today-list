@@ -37,11 +37,14 @@ const actions = {
     );
   },
   addList({commit}, payload) {
-
     ListResource.newLista({ ...payload, todos: [] }).then((res) => {
       commit('addNewLista', res);
     });
-
+  },
+  deleteTodo({dispatch}, payload) {
+    ListResource.deleteTodo({...payload}).then(() => {
+      dispatch('fetchListas');
+    })
   },
   fetchListas( {commit} ) {
     ListResource.listas().then((res) => {

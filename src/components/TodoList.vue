@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="todo in todos" :key="todo._id">
-      <todo-item :todo="todo" />
+      <todo-item @deleteTodo="doDelete" :todo="todo" />
     </div>
     <v-form @submit.prevent="doAdd">
       <v-text-field
@@ -40,6 +40,13 @@ export default {
         lista_id: this.listaId,
       });
       this.todo_form = '';
+    },
+    doDelete(payload) {
+      console.log(this.listaId);
+      this.$emit('doDelete', {
+        ...payload,
+        lista_id: this.listaId
+      });
     },
   },
   components: {

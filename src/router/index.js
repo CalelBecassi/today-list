@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
+
 Vue.use(VueRouter)
 
 const authMiddle = (to, from, next) => {
@@ -28,7 +29,8 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('../views/Home.vue'),
-    beforeEnter: authMiddle
+    beforeEnter: authMiddle,
+
   },
   {
     path: '/config',
@@ -36,7 +38,6 @@ const routes = [
     component: () => import('../views/Config.vue'),
     beforeEnter: authMiddle
   },
-
 ]
 
 const router = new VueRouter({

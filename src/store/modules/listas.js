@@ -50,6 +50,18 @@ const actions = {
     ListResource.listas().then((res) => {
       commit('setListas', res);
     })
+  },
+  deleteLista( { dispatch },payload ) {
+    ListResource.deleteLista(payload).then(() => {
+      dispatch('fetchListas');
+    });
+  },
+  saveListas({getters}) {
+    const listas = getters.getListas;
+
+    listas.forEach(lista => {
+      ListResource.saveLista(lista)
+    });
   }
 };
 

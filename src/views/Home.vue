@@ -3,7 +3,13 @@
   >
     <AppBar />
     <AddList class="add-list mt-3" @addLista="addList"/>
-    <Lists :listas="getListas"/>
+    <v-text-field class="add-list" v-model="busca"
+      solo
+      placeholder="Buscar listas por título"
+      outlined
+      rounded
+    />
+    <Lists :listas="filteredListas"/>
   </v-container>
 </template>
 
@@ -15,6 +21,12 @@
 
   export default {
     name: 'Home',
+
+    data() {
+      return{
+        busca:'',
+      };
+    },
 
     components: {
       AppBar,
@@ -28,6 +40,11 @@
       ...mapGetters([
         'getListas',
       ]),
+      filteredListas: function(){
+        return this.getListas.filter((list) => {
+          return list.nome.match(this.busca);
+        });
+      }
     },
     methods: {
       ...mapActions([

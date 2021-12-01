@@ -14,10 +14,10 @@
       <div class="d-flex align-center flex-column">
         <h1 class="my-12">Meu Perfil</h1>
 
-        <v-btn class="mb-5 style-btn py-6" color="#F2AA6B" rounded
+        <v-btn class="mb-5 style-btn py-6" color="#F2AA6B" rounded disabled
           >Configurações</v-btn
         >
-        <v-btn class="mb-5 style-btn py-6" color="#F2AA6B" rounded
+        <v-btn class="mb-5 style-btn py-6" color="#F2AA6B" rounded disabled
           >Apagar Dados</v-btn
         >
         <v-btn 

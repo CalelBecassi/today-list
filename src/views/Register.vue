@@ -53,6 +53,9 @@
 
               <v-text-field
                 v-model="senha"
+                :append-icon="password ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="password ? 'text' : 'password'"
+                @click:append="password = !password"
                 label="Senha"
                 prepend-inner-icon="mdi-lock"
                 dense
@@ -61,6 +64,9 @@
 
               <v-text-field
                 v-model="confirmacaoSenha"
+                :append-icon="passwordConfirm ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="passwordConfirm ? 'text' : 'password'"
+                @click:append="passwordConfirm = !passwordConfirm"
                 label="Confirme a senha"
                 prepend-inner-icon="mdi-lock"
                 dense
@@ -86,6 +92,8 @@ export default {
       email: '',
       senha: '',
       confirmacaoSenha: '',
+      password : false,
+      passwordConfirm : false,
     };
   },
   methods: {

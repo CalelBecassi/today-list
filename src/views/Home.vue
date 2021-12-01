@@ -32,9 +32,14 @@
     methods: {
       ...mapActions([
         'addList',
-        'fetchListas'
+        'fetchListas',
+        'saveListas'
       ])
-    }
+    },
+    beforeRouteLeave(to, from, next) {
+      this.saveListas();
+      next();
+    },
   }
 </script>
 

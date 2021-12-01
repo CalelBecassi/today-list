@@ -10,12 +10,30 @@
           class="list d-flex my-5 align-center flex-column rounded"
           elevation="6"
         >
-          <v-sheet class="list-title my-5 align-center rounded-pill" rounded>
-            <h3 class="text-center mt-2">
-              {{ lista.nome }}
-            </h3>
-          </v-sheet>
+          <v-sheet class="list-title my-5 rounded-pill justify-space-between" rounded>
+            <v-row
+              class="align-center"
+            >
+              <v-col
+                cols="8"
+              >
+                <h3 class="text-center mt-2">
+                  {{ lista.nome }}
+                </h3>
+              </v-col>
+          
+              <v-col
+                cols="4"
+              >
+                <v-icon
+                  @click="deleteLista({id: lista._id})"  
+                >
+                 mdi-delete
+                </v-icon> 
+              </v-col>
 
+            </v-row>
+          </v-sheet>
           <todo-list :todos="lista.todos" :listaId="lista._id" @newTodo="addTodo" @doDelete="deleteTodo"/>
         </v-sheet>
       </v-col>
@@ -34,7 +52,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['addTodo', 'deleteTodo']),
+    ...mapActions(['addTodo', 'deleteTodo', 'deleteLista']),
   },
   components: {
     TodoList,

@@ -18,6 +18,7 @@
       <v-spacer></v-spacer>
 
       <div class="right-buttons">
+        <router-link class='links' to="/public"><v-icon color="black" x-large>mdi-earth</v-icon></router-link>
         <router-link class='links' to='/'><v-icon color="black" x-large>mdi-home</v-icon></router-link>
         <router-link class='links' to='/config'><v-icon color="black" x-large>mdi-account-box</v-icon></router-link>
       </div>

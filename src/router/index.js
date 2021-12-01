@@ -38,6 +38,12 @@ const routes = [
     component: () => import('../views/Config.vue'),
     beforeEnter: authMiddle
   },
+  {
+    path: '/public',
+    name: 'Public',
+    component: () => import('../views/Public.vue'),
+    beforeEnter: authMiddle
+  }
 ]
 
 const router = new VueRouter({

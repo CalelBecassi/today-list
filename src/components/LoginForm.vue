@@ -1,4 +1,5 @@
 <template>
+
     <v-form 
     class="form-style mt-14" 
     @submit.prevent="doLogin(email, senha)"
@@ -29,7 +30,10 @@
         dark
         type="submit"
       >Entrar</v-btn>
+
+      <router-link to="Register">Registre-se aqui</router-link>
     </v-form>
+
 </template>
 
 <script>

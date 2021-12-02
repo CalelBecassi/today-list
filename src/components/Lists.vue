@@ -19,7 +19,7 @@
               >
                 <v-icon 
                   class="ml-2 mt-2"
-                  @click="lista.public = !lista.public"  
+                  @click="makePublic(lista)"
                 >
                   {{ lista.public? 'mdi-earth' : 'mdi-earth-off'}}
                 </v-icon>
@@ -46,7 +46,7 @@
 
             </v-row>
           </v-sheet>
-          <todo-list :todos="lista.todos" :listaId="lista._id" @newTodo="addTodo" @doDelete="deleteTodo"/>
+          <todo-list :todos="lista.todos" :listaId="lista._id" @newTodo="addTodo" @doDelete="deleteTodo" @saveList="saveLista(lista)"/>
         </v-sheet>
       </v-col>
     </v-row>
@@ -56,6 +56,7 @@
 <script>
 import { mapActions } from "vuex";
 import TodoList from "./TodoList.vue";
+
 export default {
   props: {
     listas: {
@@ -64,7 +65,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['addTodo', 'deleteTodo', 'deleteLista']),
+    ...mapActions(['addTodo', 'deleteTodo', 'deleteLista', 'saveLista']),
+    makePublic(payload) {
+      payload.public = !payload.public;
+      this.saveLista(payload);
+    }
   },
   components: {
     TodoList,

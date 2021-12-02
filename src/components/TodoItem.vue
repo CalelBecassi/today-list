@@ -9,7 +9,7 @@
       </div>
       <v-spacer />
       <div class="mt-n2">
-        <v-checkbox v-model="todo.feito"/>
+        <v-checkbox v-model="todo.feito" @click="saveList"/>
       </div>
       <v-icon 
         class="mt-n2"
@@ -34,6 +34,9 @@ export default {
     deleteTodo() {
       this.$emit('deleteTodo', {id: this.todo._id});
     },
+    saveList() {
+      this.$emit('saveList');
+    }
   }
 };
 </script>

@@ -59,7 +59,6 @@ const actions = {
   },
   fetchPublicLists({commit}) {
     ListResource.listasPublicas().then((res) => {
-      console.log(res);
       commit('setPublicLists', res);
     })
   },
@@ -74,6 +73,9 @@ const actions = {
     listas.forEach(lista => {
       ListResource.saveLista(lista)
     });
+  },
+  saveLista(_, payload) {
+    ListResource.saveLista(payload);
   }
 };
 

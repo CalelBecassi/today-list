@@ -53,10 +53,6 @@
         'saveListas'
       ])
     },
-    beforeRouteLeave(to, from, next) {
-      this.saveListas();
-      next();
-    },
   }
 </script>
 

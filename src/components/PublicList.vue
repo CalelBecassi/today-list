@@ -29,11 +29,13 @@
             class="todo-style mb-3 rounded"
           >
             <div class="d-flex align-center justify-center ml-3">
-              <div class="text-center">
+              <div class="mt-2 text-center">
                 <h3 
-                  class="mt-2 font-weight-regular" 
+                  class="font-weight-regular"
                   :class="todo.feito && 'font-italic text-decoration-line-through'"
-                > {{ todo.descricao }} </h3>
+                > 
+                  {{ todo.descricao }} 
+                </h3>
               </div>
             </div>
           </v-sheet>

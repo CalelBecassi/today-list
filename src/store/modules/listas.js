@@ -1,11 +1,13 @@
 import ListResource from "../../api/resources/list";
 
 const state = {
-  listas: []
+  listas: [],
+  publicListas: []
 };
 
 const getters = {
   getListas: (state) => state.listas,
+  getPublicLists: (state) => state.publicListas,
 };
 
 const mutations = {
@@ -25,6 +27,10 @@ const mutations = {
   setListas($state,payload) {
     const stateCopy = $state;
     stateCopy.listas = payload;
+  },
+  setPublicLists($state,payload) {
+    const stateCopy = $state;
+    stateCopy.publicListas = payload;
   }
 };
 
@@ -49,6 +55,12 @@ const actions = {
   fetchListas( {commit} ) {
     ListResource.listas().then((res) => {
       commit('setListas', res);
+    })
+  },
+  fetchPublicLists({commit}) {
+    ListResource.listasPublicas().then((res) => {
+      console.log(res);
+      commit('setPublicLists', res);
     })
   },
   deleteLista( { dispatch },payload ) {

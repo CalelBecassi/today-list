@@ -15,6 +15,17 @@
               class="align-center"
             >
               <v-col
+                cols="2"
+              >
+                <v-icon 
+                  class="ml-2 mt-2"
+                  @click="lista.public = !lista.public"  
+                >
+                  {{ lista.public? 'mdi-earth' : 'mdi-earth-off'}}
+                </v-icon>
+              </v-col>
+
+              <v-col
                 cols="8"
               >
                 <h3 class="text-center mt-2">
@@ -23,9 +34,10 @@
               </v-col>
           
               <v-col
-                cols="4"
+                cols="2"
               >
                 <v-icon
+                  class="mr-4 mt-2"
                   @click="deleteLista({id: lista._id})"  
                 >
                  mdi-delete
